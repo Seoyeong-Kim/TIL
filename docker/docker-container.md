@@ -36,7 +36,7 @@ docker container rm f66f6f2013da
 * 컨테이너 오케스트레이션을 통해 컨테이너 증가/감소/배치, 로드밸런싱, 배포 관리 등 다양한 장점을 활용할 수 있다.
 
 ## 2. 실습
-### 2.1 도커 컴포즈로 여러 컨테이너 실행하기
+### 2.1 도커 컴포즈로 여러 컨테이너 실행하기
 * 도커 이미지 생성
 * docker-compose.yml 파일 작성
 ```xml
@@ -60,4 +60,52 @@ docker-compose up -d
 ```
 docker-compose down
 ```
-  
+### 2.2 젠킨스 컨테이너 실행하기
+* docker hub 이미지 사용
+* docker-compose.yml 파일 작성
+```yaml
+version: "3"
+services:
+  master:
+    container_name: master
+    image: jenkinsci/jenkins:2.142-slim
+    ports:
+      - 8080:8080
+# 호스트와 컨테이너 사이에 파일을 공유하는 디렉토리 지정
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+```
+* 컨테이너 실행 후 jenkins plugins 설치
+설치를 진행하면 /var/jenkins_home 위치에 데이터가 저장되므로 컨테이너를 재시작해도 초기 설정이 유지된다
+* 마스터 젠킨스용 SSH 키 생성
+```
+# 마스터 컨테이너에 접속한 다음 SSH 키 생성
+docker container exec -it master ssh-keygen -t rsa -C ""
+```
+* docker-compose.yml 파일 수정
+```yaml
+version: "3"
+services:
+  master:
+    container_name: master
+    image: jenkinsci/jenkins:2.142-slim
+    ports:
+      - 8080:8080
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+# links 요소를 사용해 다른 sevice 그룹 컨테이너와 통신한다.
+    links:
+      - slave01
+  slave01:
+    container_name: slave01
+    image: jenkinsci/ssh-slave
+    # master 컨테이너에서 만든 ssh public key를 적어준다.
+    environment:
+      - JENKINS_SLAVE_SSH_PUBKEY=ssh-rsa ~~~~~~
+```
+* 컨테이너 실행 후 slave01 노드 추가
+  * SSH 아이디 (jenkins) / 비밀키를 이용하여 인증정보를 추가한다.
+  * Host Key Verification Strategy : Non verifying Verification Strategy
+
+
+
