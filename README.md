@@ -7,3 +7,6 @@
 * [도커 컨테이너](https://github.com/Seoyeong-Kim/TIL/blob/master/docker/docker-container.md)
 * [도커 컨테이너 구축과 배포](https://github.com/Seoyeong-Kim/TIL/blob/master/docker/docker-container-deploy.md)
 * [도커 스웜](https://github.com/Seoyeong-Kim/TIL/blob/master/docker/docker-swarm.md)
+
+### 쿠버네티스
+* [쿠버네티스 기초](https://github.com/Seoyeong-Kim/TIL/blob/master/kubernetes/kubernetes-basic.md)
