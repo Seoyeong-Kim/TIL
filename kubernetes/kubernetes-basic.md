@@ -1,4 +1,4 @@
->[Slipp 스터디](https://www.slipp.net/wiki/pages/viewpage.action?pageId=41582977)에서 Docker&Kubernates 수업을 하며 정리  
+>[Slipp 스터디](https://www.slipp.net/wiki/pages/viewpage.action?pageId=41582977)에서 Docker&Kubernetes 수업을 하며 정리  
 참고한 책 : [도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문](http://aladin.co.kr/shop/wproduct.aspx?ItemId=186771560)
 
 ## 1. 쿠버네티스
