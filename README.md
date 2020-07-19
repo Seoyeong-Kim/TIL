@@ -10,3 +10,7 @@
 
 ### 쿠버네티스
 * [쿠버네티스 기초](https://github.com/Seoyeong-Kim/TIL/blob/master/kubernetes/kubernetes-basic.md)
+
+
+### MSA
+* [마이크로 서비스 패턴 책읽기 1장](https://github.com/Seoyeong-Kim/TIL/blob/master/msa/1.md)
