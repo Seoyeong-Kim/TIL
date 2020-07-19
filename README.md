@@ -13,4 +13,4 @@
 
 
 ### MSA
-* [마이크로 서비스 패턴 책읽기 1장](https://github.com/Seoyeong-Kim/TIL/blob/master/msa/1.md)
+* [마이크로 서비스 패턴 책읽기 1장](https://github.com/Seoyeong-Kim/TIL/blob/master/msa/msa-pattern-1.md)
